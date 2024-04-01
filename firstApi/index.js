@@ -7,8 +7,17 @@ const app=express();
 // Create router instance for routing form express 
 const router=express.Router();
 // get api creation router.get(path,callback)
-router.post('/', function(req,res){
-    res.send("my first api!");
+router.get('/hello', function(req,res){
+
+    // getting values from query params
+    const name=req.query.product;
+    const brand=req.query.brand;
+
+    // getting query object
+    const data=req.query;
+
+    // console.log(brand)
+    res.send({status :'ok',message:data});
 })
 
 // global middleware for all api calling defined with router
