@@ -6,6 +6,10 @@ const app=express();
 
 // Create router instance for routing form express 
 const router=express.Router();
+
+// enabling json data read
+app.use(express.json());
+
 // get api creation router.get(path,callback)
 router.get('/:country/user/:state', function(req,res){
 
@@ -16,19 +20,26 @@ router.get('/:country/user/:state', function(req,res){
     // getting query object
 
     // const data=req.query;
-    const{name,brand}=req.query;
 
-    // console.log(brand)
+    // Destructring the query param
+    // const{name,brand}=req.query;
 
+    // accessing path param
     const countryName=req.params
     console.log(countryName)
-    res.send({status :'ok',message:{name:name,brand:brand}});
+
+    // accessing body req
+    const user=req.body;
+    console.log(user)
+    
+
+    res.send({status :'ok',message:{name:name,brand:brand,user:user}});
 })
 
 // global middleware for all api calling defined with router
 app.use('/',router)
 
 // code for server start  app.listen(port,callBack function)
-app.listen(8000,function (){
-    console.log('server started at port:',8000);
+app.listen(8001,function (){
+    console.log('server started at port:',8001);
 })
