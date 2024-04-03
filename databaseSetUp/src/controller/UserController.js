@@ -4,4 +4,5 @@ const user = async(req, res) => {
   const createdUser=await userModals.create(data)
   return res.send({status:'ok',message:createdUser})
 };
+SAndan
 module.exports=user 
